@@ -9,14 +9,14 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "yourdomain-terraform"
+    bucket = "smm-terraform-bucket"
     key    = "prod/terraform.tfstate"
-    region = "eu-west-1"
+    region = "us-east-1"
   }
 }
 
 provider "aws" {
-  region = "eu-west-1"
+  region = "us-east-1"
 }
 
 provider "aws" {
