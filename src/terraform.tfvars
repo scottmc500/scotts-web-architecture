@@ -1,6 +1,6 @@
-domain_name = "scottmchenry.info"
-bucket_name = "scottmchenry.info"
+domain_name = "scottmchenry.net"
+bucket_name = "scottmchenry.net"
 
 common_tags = {
-  Project = "scottmchenry.info"
+  Project = "scottmchenry.net"
 }
