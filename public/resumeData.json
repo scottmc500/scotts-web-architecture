@@ -1,0 +1,148 @@
+{
+  "main": {
+    "name": "Scott McHenry",
+    "occupation": "Software and DevOps Engineer",
+    "description": "I'm a Vice President of Software Engineering for JPMorgan Chase & Co., and I'm a graduate of both Case Western Reserve University (2014, B.S. Computer Engineering) and Drexel University (2018, M.S. Software Engineering).",
+    "image": "profilepic.jpg",
+    "bio": "I am an experienced Computer Systems Engineer and Project Manager with a demonstrated history of achievement in software information systems engineering in the public and private sectors. I currently work as a Vice President of Software Engineering for JPMorgan Chase. I previously worked as a Lead Systems Engineer for US Navy Information Systems. I am skilled in the Systems Engineering Process, multiple programming languages including Java, Python, and various .NET languages including C# and Visual Basic, and Microsoft Office tools such as Excel, Project and Sharepoint. He graduated in 2018 from Drexel University with a M.S. degree in Software Engineering, and Case Western Reserve University in 2014 with a B.S. degree in Computer Engineering.",
+    "contactmessage": "Feel free to send me a message, and I will get back to you as soon as I can.",
+    "email": "smchenry2014@gmail.com",
+    "phone": "+1 (215) 595-4873",
+    "address": {
+      "street": "2603 Heritage Farm Drive",
+      "city": "Wilmington",
+      "state": "DE",
+      "zip": "19808"
+    },
+    "website": "http://www.scottmchenry.info",
+    "resumedownload": "https://s3.amazonaws.com/scottmchenry.info/mchenry-scott-resume.pdf",
+    "social": [
+      {
+        "name": "linkedin",
+        "url": "https://www.linkedin.com/in/scottmmchenry/",
+        "className": "fa fa-linkedin"
+      },
+      {
+        "name": "github",
+        "url": "http://github.com/scottmc500",
+        "className": "fa fa-github"
+      },
+      {
+        "name": "stack-overflow",
+        "url": "https://stackoverflow.com/users/17783295/scott-mchenry",
+        "className": "fa fa-stack-overflow"
+      }
+    ]
+  },
+  "resume": {
+    "skillmessage": "I'm always looking to explore new tools and techinques to make myself a better software engineer.  Here are a few that I use regularly.",
+    "education": [
+      {
+        "school": "Case Western Reserve University",
+        "degree": "Bachelor of Science in Computer Engineering",
+        "graduated": "May 2014",
+        "picture": "cwru.jpeg",
+        "description": "I graduated with a 3.19 GPA.  Relevant course work included Introduction to Data Structures, Computer Architecture, Logic Design and Computer Organization, Circuits and Instruments, Discrete Mathematics, Introduction to Database Systems, Digital Systems Design, Compiler Design, Introduction to Operating Systems, VLSI/CAD, Algorithms and Data Structures, and Programming Language Concepts."
+      },
+      {
+        "school": "Drexel University",
+        "degree": "Master of Science in Software Engineering",
+        "graduated": "June 2018",
+        "picture": "drexel.png",
+        "description": "I graduated with a 3.86 GPA.  Relavant course work included Advanced Database Management, Data Mining, Information Systems Management, Requirements Engineering and Management, Information Technology Integration, Software Project Management, Human Computer Interaction, Computer Networks, Software Engineering Processes, Information Systems Analysis and Design, Database Management, Evaluation of Information Systems, and Dependable Software Systems."
+      }
+    ],
+    "work": [
+      {
+        "company": "JPMorgan Chase & Co.",
+        "title": "Vice President of Software Engineering",
+        "years": "January 2019 - Present",
+        "picture": "jpmorgan.png",
+        "description": "JPMorgan Chase & Co. (NYSE: JPM) is a leading global financial services firm with assets of $2.6 trillion and operations worldwide. The Firm is a leader in investment banking, financial services for consumers and small businesses, commercial banking, financial transaction processing, and asset management. A component of the Dow Jones Industrial Average, JPMorgan Chase & Co. serves millions of consumers in the United States and many of the world's most prominent corporate, institutional and government clients under its J.P. Morgan and Chase brands. Information about JPMorgan Chase & Co. is available at www.jpmorganchase.com."
+      },
+      {
+        "company": "Program Executive Office of Enterprise Information Systems (PEO EIS)",
+        "title": "Computer Engineer",
+        "years": "June 2014 - December 2018",
+        "picture": "peoeis.png",
+        "description": "While working as a civilian with the US Navy, I worked as a mobile application developer for the FMS Calculator mobile app, and as Assistant Program Manager of Engineering (APME) for the Naval Justice Information System (NJIS). I managed all systems engineering processes and day-to-day development. I provided technical expertise to stakeholders across multiple departments and areas of expertise."
+      }
+    ],
+    "skills": [
+      {
+        "name": "Python",
+        "picture": "python.png",
+        "description": "Python was my first programming language, and I've used it in both personal and work projects.  It has come in handy as a robust scripting language for use when deploying large application components."
+      },
+      {
+        "name": "Java",
+        "picture": "java.svg",
+        "description": "Java is currently my most used programming language, and it is my most familiar and fluent programming language.  I have experience with using frameworks such as Spring Boot to create robust and high-performance APIs and web applications."
+      },
+      {
+        "name": "React",
+        "picture": "react.jpeg",
+        "description": "I have used React to design front-end user interfaces for several applications, including this website and a metadata storage application I designed for JPMorgan Chase.  It is easily my most fluent JavaScript framework to use for an application frontend or static website."
+      },
+      {
+        "name": "Amazon Web Services",
+        "picture": "aws.png",
+        "description": "I work frequently with Amazon Web Services in both my personal and work projects.  My work includes hosting static websites on Amazon S3 and running Spring Boot applications in Elastic Beanstalk.  I also manage web domains and content using Amazon Route 53 and CloudFront."
+      },
+      {
+        "name": "Jenkins/GitHub Actions",
+        "picture": "jenkins.png",
+        "description": "I believe that Continuous Integration and Delivery of new requirements and capabilities is crucial for any software project.  To that end, I've gain significant skill in using both Jenkins and GitHub Actions for all of my CI/CD needs."
+      },
+      {
+        "name": "GitHub",
+        "picture": "github.png",
+        "description": "I primarily use Git and GitHub for version control on personal and smaller projects.  I also have experience with Bitbucket, which I have used on my larger projects with JPMorgan Chase."
+      },
+      {
+        "name": "Relational Databases (Oracle, MySQL, MariaDB)",
+        "picture": "mysql.png",
+        "description": "Most of my experience working with databases has been with designing and implementing relational databases, including Oracle, MySQL, and MariaDB.  Of these, MySQL is my personal favorite."
+      },
+      {
+        "name": "NoSQL Databases (DynamoDB, MongoDB)",
+        "picture": "dynamodb.svg",
+        "description": "Along with Relational Databases, I have experience working with a few NoSQL database products as well.  My personal favorite is AWS DynamoDB, which I have included in this website for storing messages sent through the contact form."
+      },
+      {
+        "name": "Microservices Architecture Design",
+        "picture": "microservices.jpeg",
+        "description": "As I have progressed in my career, I have learned a lot about how to design effective, distributed, and decoupled software systems based on microservice architecture design.  This design pattern allows my software applications to be highly durable and scalable when the situation demands it."
+      },
+      {
+        "name": "Excel Spreadsheets",
+        "picture": "excel.png",
+        "description": "I have considerable experience working with excel spreadsheets, including complex formulas and macro functions using Visual Basic Applications (VBA) for Excel."
+      }
+    ]
+  },
+  "portfolio": {
+    "projects": [
+      {
+        "title": "FMS Calculator",
+        "category": "A mobile app to help enlisted US Navy personnel advance their careers.",
+        "image": "fms-calculator.jpg",
+        "url": "https://www.applocker.navy.mil/#!/apps/C28CB458-ADA9-4758-B13E-5F13F1EC4FFF"
+      },
+      {
+        "title": "Naval Justice Information System",
+        "category": "A web-based information system that enables ‘cradle-to-grave’ tracking of military/criminal justice information.",
+        "image": "NJIS_tri.jpeg",
+        "url": "https://www.hqmc.marines.mil/Portals/138/Docs/PS/PSL/NJIS/NJIS_TrifoldFinal.pdf"
+      }
+    ]
+  },
+  "testimonials": {
+    "testimonials": [
+      {
+        "text": "As one of our only true developers, Scott has a lot of opportunity to assist our product teams to better serve our customers. Scott has shown a willingness to grow and has accepted any challenges thrown his way. I look forward to seeing what Scott can do to further his influence on our products in 2022.",
+        "user": "Joshua Kershaw, JPMorgan Chase & Co."
+      }
+    ]
+  }
+}
