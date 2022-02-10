@@ -8,7 +8,7 @@ on:
 
 jobs:
   terraform:
-    name: "Terraform"
+    name: "Deploy Scott's Website"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -27,7 +27,9 @@ jobs:
           tf_actions_working_dir: '.'
       - name: Terraform Validate
         run: terraform validate
-      - name: Terraform Plan
-        run: terraform plan
       - name: Terrform Apply
         run: terraform apply -auto-approve
+      - name: Compile Web Application
+        run: npm install && npm run build
+      - name: Deploy App Build to S3 Bucket
+        run: aws s3 sync ./build/ s3://www.scottmchenry.net --delete
