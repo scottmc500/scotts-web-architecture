@@ -37,3 +37,5 @@ jobs:
         run: npm install && npm run build
       - name: Deploy App Build to S3 Bucket
         run: aws s3 sync ./build/ s3://www.scottmchenry.net --delete
+      - name: Invalidating AWS CloudFront Cache
+        run: aws cloudfront create-invalidation --distribution-id=${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION }} --paths "/*"
