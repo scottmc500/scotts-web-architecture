@@ -10,19 +10,81 @@ resource "aws_api_gateway_resource" "message" {
   rest_api_id = aws_api_gateway_rest_api.messages_api.id
 }
 
-resource "aws_api_gateway_method" "message" {
+resource "aws_api_gateway_method" "message_post" {
   authorization = "NONE"
   http_method   = "POST"
   resource_id   = aws_api_gateway_resource.message.id
   rest_api_id   = aws_api_gateway_rest_api.messages_api.id
+  api_key_required = true
 }
 
-resource "aws_api_gateway_integration" "message" {
-  http_method = aws_api_gateway_method.message.http_method
+resource "aws_api_gateway_integration" "message_post" {
+  http_method = aws_api_gateway_method.message_post.http_method
   resource_id = aws_api_gateway_resource.message.id
   rest_api_id = aws_api_gateway_rest_api.messages_api.id
   type = "AWS"
   integration_http_method = "POST"
   uri = "arn:aws:apigateway:${var.aws_region}:dynamodb:action/PutItem"
   credentials = aws_iam_role.messages_api_role.arn
+}
+
+resource "aws_api_gateway_method_response" "message_post" {
+    rest_api_id = aws_api_gateway_rest_api.messages_api.id
+    resource_id = aws_api_gateway_resource.message.id
+    http_method = aws_api_gateway_method.message_post.http_method
+    status_code = "200"
+    response_parameters = {
+        "method.response.header.Access-Control-Allow-Origin" = true
+    }
+}
+
+resource "aws_api_gateway_integration_response" "message_post" {
+    depends_on = [aws_api_gateway_integration.message_post]
+    rest_api_id = aws_api_gateway_rest_api.messages_api.id
+    resource_id = aws_api_gateway_resource.message.id
+    http_method = aws_api_gateway_method.message_post.http_method
+    status_code = aws_api_gateway_method_response.message_post.status_code
+    response_parameters = {
+        "method.response.header.Access-Control-Allow-Origin" = "'*'"
+    }
+}
+
+resource "aws_api_gateway_deployment" "message" {
+    rest_api_id = aws_api_gateway_rest_api.messages_api.id
+    triggers = {
+        redeployment = sha1(jsonencode([
+            aws_api_gateway_resource.message.id,
+            aws_api_gateway_method.message_post.id,
+            aws_api_gateway_integration.message_post.id,
+            aws_api_gateway_method_response.message_post.id,
+            aws_api_gateway_integration_response.message_post.id
+        ]))
+    }
+    lifecycle {
+      create_before_destroy = true
+    }
+}
+
+resource "aws_api_gateway_stage" "default" {
+    deployment_id = aws_api_gateway_deployment.message.id
+    rest_api_id = aws_api_gateway_rest_api.messages_api.id
+    stage_name = "default"
+}
+
+resource "aws_api_gateway_api_key" "messages_key" {
+    name = "messages_key"
+}
+
+resource "aws_api_gateway_usage_plan" "messages_usage_plan" {
+    name = "messages_usage_plan"
+    api_stages {
+        api_id = aws_api_gateway_rest_api.messages_api.id
+        stage = aws_api_gateway_stage.default.stage_name
+    }
+}
+
+resource "aws_api_gateway_usage_plan_key" "messages_usage_plan_key" {
+    key_id = aws_api_gateway_api_key.messages_key.id
+    key_type = "API_KEY"
+    usage_plan_id = aws_api_gateway_usage_plan.messages_usage_plan.id
 }
