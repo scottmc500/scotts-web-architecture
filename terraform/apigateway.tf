@@ -10,6 +10,14 @@ resource "aws_api_gateway_resource" "message" {
   rest_api_id = aws_api_gateway_rest_api.messages_api.id
 }
 
+module "cors" {
+  source  = "mewa/apigateway-cors/aws"
+  version = "2.0.1"
+  api      = aws_api_gateway_rest_api.messages_api.id
+  resource = aws_api_gateway_resource.message.id
+  methods = ["POST"]
+}
+
 resource "aws_api_gateway_method" "message_post" {
   authorization = "NONE"
   http_method   = "POST"
@@ -51,15 +59,8 @@ resource "aws_api_gateway_integration_response" "message_post" {
 
 resource "aws_api_gateway_deployment" "message" {
     rest_api_id = aws_api_gateway_rest_api.messages_api.id
-    triggers = {
-        redeployment = sha1(jsonencode([
-            aws_api_gateway_resource.message.id,
-            aws_api_gateway_method.message_post.id,
-            aws_api_gateway_integration.message_post.id,
-            aws_api_gateway_method_response.message_post.id,
-            aws_api_gateway_integration_response.message_post.id
-        ]))
-    }
+    stage_name = "default"
+    stage_description = "Deployed at ${timestamp()}"
     lifecycle {
       create_before_destroy = true
     }
@@ -79,7 +80,7 @@ resource "aws_api_gateway_usage_plan" "messages_usage_plan" {
     name = "messages_usage_plan"
     api_stages {
         api_id = aws_api_gateway_rest_api.messages_api.id
-        stage = aws_api_gateway_stage.default.stage_name
+        stage = aws_api_gateway_deployment.message.stage_name
     }
 }
 
