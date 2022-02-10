@@ -2,6 +2,10 @@ resource "aws_sns_topic" "messaging_topic" {
     name = "smm-message-topic"
 }
 
+resource "aws_sqs_queue" "messaging_dlq" {
+    name = "smm-message-dlq"
+}
+
 data "archive_file" "lambda_package" {
     type = "zip"
     source_file = "lambdas/lambda_function.py"
@@ -21,8 +25,15 @@ resource "aws_lambda_function" "message_listener" {
     }
 }
 
-resource "aws_lambda_event_source_mapping" "example" {
-  event_source_arn  = aws_dynamodb_table.messages-dynamodb-table.stream_arn
-  function_name     = aws_lambda_function.message_listener.arn
-  starting_position = "LATEST"
+resource "aws_lambda_event_source_mapping" "lambda_dynamodb_mapping" {
+    function_name     = aws_lambda_function.message_listener.arn
+    event_source_arn  = aws_dynamodb_table.messages-dynamodb-table.stream_arn
+    starting_position = "LATEST"
+    maximum_record_age_in_seconds = 60
+    maximum_retry_attempts = 2
+    destination_config {
+      on_failure {
+          destination_arn = aws_sqs_queue.messaging_dlq.arn
+      }
+    }
 }
