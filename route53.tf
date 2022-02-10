@@ -28,6 +28,23 @@ resource "aws_route53_record" "www-a" {
   }
 }
 
+resource "aws_route53_record" "api-a" {
+  zone_id = aws_route53_zone.main.zone_id
+  name = aws_api_gateway_domain_name.api_domain.domain_name
+  type = "A"
+
+  alias {
+    name = aws_api_gateway_domain_name.api_domain.cloudfront_domain_name
+    zone_id = aws_api_gateway_domain_name.api_domain.cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_api_gateway_domain_name" "api_domain" {
+  certificate_arn = aws_acm_certificate_validation.cert_validation.certificate_arn
+  domain_name = "api.${var.domain_name}"
+}
+
 # Uncomment the below block if you are doing certificate validation using DNS instead of Email.
 resource "aws_route53_record" "cert_validation" {
   for_each = {
