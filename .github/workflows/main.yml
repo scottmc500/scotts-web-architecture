@@ -24,11 +24,9 @@ jobs:
         with:
           tf_actions_version: 1.1.5
           tf_actions_subcommand: 'init'
-          tf_actions_working_dir: './terraform'
+          tf_actions_working_dir: '.'
       - name: Terraform Format
         run: terraform fmt -check
-      - name: Navigate to Terraform Folder
-        run: cd terraform && ls
       - name: Terraform Validate
         run: terraform validate
       - name: Terraform Plan
