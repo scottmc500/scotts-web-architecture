@@ -115,6 +115,11 @@
         "description": "As I have progressed in my career, I have learned a lot about how to design effective, distributed, and decoupled software systems based on microservice architecture design.  This design pattern allows my software applications to be highly durable and scalable when the situation demands it."
       },
       {
+        "name": "Instrastructure as Code",
+        "picture": "terraform.jpeg",
+        "description": "Infrastructure as Code is a powerful means to exhert greater control over your system architecture and make it more elastic and more portable.  To that end, I have learned to use Terraform for managing infrastructure as code in both my work and personal projects."
+      },
+      {
         "name": "Excel Spreadsheets",
         "picture": "excel.png",
         "description": "I have considerable experience working with excel spreadsheets, including complex formulas and macro functions using Visual Basic Applications (VBA) for Excel."
