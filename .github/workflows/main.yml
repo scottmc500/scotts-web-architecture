@@ -1,6 +1,7 @@
 name: Deploy Scott's Web Architecture
 
 on:
+  workflow_dispatch:
   push:
     branch:
       - main
