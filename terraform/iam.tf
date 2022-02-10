@@ -1,11 +1,11 @@
 resource "aws_iam_role" "messages_api_role" {
     name = "messages_api_role"
-    assume_role_policy = templatefile("templates/api-gateway-policy.json", { bucket = var.bucket_name })
+    assume_role_policy = file("templates/api-gateway-policy.json")
 }
 
 resource "aws_iam_role" "messages_lambda_role" {
     name = "messages_lambda_role"
-    assume_role_policy = templatefile("templates/lambda-policy.json", { bucket = var.bucket_name })
+    assume_role_policy = file("templates/lambda-policy.json")
 }
 
 resource "aws_iam_role_policy_attachment" "api_gateway_dynamodb_policy_attach" {
