@@ -46,6 +46,7 @@ class Contact extends Component {
          }
       });
 
+      console.log(process.env.REACT_APP_API_URL);
       $.ajax({
          type: "POST",
          url: process.env.REACT_APP_API_URL,
