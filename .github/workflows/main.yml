@@ -28,11 +28,11 @@ jobs:
         with:
           tf_actions_version: 1.1.5
           tf_actions_subcommand: 'init'
-          tf_actions_working_dir: '.'
+          tf_actions_working_dir: './terraform'
       - name: Terraform Validate
-        run: terraform validate
+        run: terraform -chdir="./terraform" validate
       - name: Terrform Apply
-        run: terraform apply -auto-approve
+        run: terraform -chdir="./terraform" apply -auto-approve
       - name: Compile Web Application
         run: npm install && npm run build
       - name: Deploy App Build to S3 Bucket
