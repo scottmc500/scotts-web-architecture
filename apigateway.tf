@@ -1,5 +1,3 @@
-
-
 resource "aws_api_gateway_rest_api" "messages_api" {
   name = "messages-api"
 }
@@ -41,9 +39,6 @@ resource "aws_api_gateway_method_response" "message_post" {
     resource_id = aws_api_gateway_resource.message.id
     http_method = aws_api_gateway_method.message_post.http_method
     status_code = "200"
-    response_parameters = {
-        "method.response.header.Access-Control-Allow-Origin" = true
-    }
 }
 
 resource "aws_api_gateway_integration_response" "message_post" {
@@ -52,21 +47,12 @@ resource "aws_api_gateway_integration_response" "message_post" {
     resource_id = aws_api_gateway_resource.message.id
     http_method = aws_api_gateway_method.message_post.http_method
     status_code = aws_api_gateway_method_response.message_post.status_code
-    response_parameters = {
-        "method.response.header.Access-Control-Allow-Origin" = "'*'"
-    }
 }
 
 resource "aws_api_gateway_deployment" "message" {
     rest_api_id = aws_api_gateway_rest_api.messages_api.id
     triggers = {
-      redeployment = sha1(jsonencode([
-        aws_api_gateway_resource.message.id,
-        aws_api_gateway_method.message_post.id,
-        aws_api_gateway_method_response.message_post.id,
-        aws_api_gateway_integration.message_post.id,
-        aws_api_gateway_integration_response.message_post.id
-      ]))
+      redeployment = sha1(jsonencode(aws_api_gateway_rest_api.messages_api.body))
     }
     lifecycle {
       create_before_destroy = true
