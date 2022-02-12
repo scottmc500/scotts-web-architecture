@@ -35,14 +35,14 @@ jobs:
         run: terraform -chdir="./terraform" apply -auto-approve
       - name: Set Environment Variables
         run: |
-        echo "REACT_APP_API_URL=$(terraform output -raw api_endpoint)" >> $GITHUB_ENV
-        echo "REACT_APP_API_KEY=$(terraform output -raw api_key_value)" >> $GITHUB_ENV
-        echo "CLOUDFRONT_DISTRIBUTION=$(terraform output -raw www_distribution_id)" >> $GITHUB_ENV
+          echo "REACT_APP_API_URL=$(terraform output -raw api_endpoint)" >> $GITHUB_ENV
+          echo "REACT_APP_API_KEY=$(terraform output -raw api_key_value)" >> $GITHUB_ENV
+          echo "CLOUDFRONT_DISTRIBUTION=$(terraform output -raw www_distribution_id)" >> $GITHUB_ENV
       - name: Verify Environment Variable Values
         run: |
-        echo $REACT_APP_API_URL
-        echo $REACT_APP_API_KEY
-        echo $CLOUDFRONT_DISTRIBUTION
+          echo $REACT_APP_API_URL
+          echo $REACT_APP_API_KEY
+          echo $CLOUDFRONT_DISTRIBUTION
       - name: Compile Web Application
         run: npm install && npm run build
       - name: Deploy App Build to S3 Bucket
