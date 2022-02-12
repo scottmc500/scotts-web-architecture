@@ -6,11 +6,6 @@ on:
     branch:
       - main
 
-env:
-  REACT_APP_API_URL: XXXXX
-  REACT_APP_API_KEY: XXXXX
-  CLOUDFRONT_DISTRIBUTION: XXXXX
-
 jobs:
   terraform:
     name: "Deploy Scott's Website"
