@@ -35,18 +35,28 @@ resource "aws_api_gateway_integration" "message_post" {
 }
 
 resource "aws_api_gateway_method_response" "message_post" {
-    rest_api_id = aws_api_gateway_rest_api.messages_api.id
-    resource_id = aws_api_gateway_resource.message.id
-    http_method = aws_api_gateway_method.message_post.http_method
-    status_code = "200"
+  rest_api_id = aws_api_gateway_rest_api.messages_api.id
+  resource_id = aws_api_gateway_resource.message.id
+  http_method = aws_api_gateway_method.message_post.http_method
+  status_code = "200"
+  response_parameters = {
+    "method.response.header.Access-Control-Allow-Origin" = true,
+    "method.response.header.Access-Control-Allow-Methods" = true,
+    "method.response.header.Access-Control-Allow-Headers" = true
+  }
 }
 
 resource "aws_api_gateway_integration_response" "message_post" {
-    depends_on = [aws_api_gateway_integration.message_post]
-    rest_api_id = aws_api_gateway_rest_api.messages_api.id
-    resource_id = aws_api_gateway_resource.message.id
-    http_method = aws_api_gateway_method.message_post.http_method
-    status_code = aws_api_gateway_method_response.message_post.status_code
+  depends_on = [aws_api_gateway_integration.message_post]
+  rest_api_id = aws_api_gateway_rest_api.messages_api.id
+  resource_id = aws_api_gateway_resource.message.id
+  http_method = aws_api_gateway_method.message_post.http_method
+  status_code = aws_api_gateway_method_response.message_post.status_code
+  response_parameters = {
+    "method.response.header.Access-Control-Allow-Origin" = "'*'",
+    "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Requested-With'",
+    "method.response.header.Access-Control-Allow-Methods" = "'GET,OPTIONS,POST,PUT'"
+  }
 }
 
 resource "aws_api_gateway_deployment" "message" {
