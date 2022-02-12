@@ -21,6 +21,12 @@ resource "aws_sns_topic" "messaging_topic" {
     name = "smm-message-topic"
 }
 
+resource "aws_sns_topic_subscription" "email_subscription" {
+  topic_arn = aws_sns_topic.messaging_topic.arn
+  protocol = "email"
+  endpoint = "smchenry2014@gmail.com"
+}
+
 resource "aws_sqs_queue" "messaging_dlq" {
     name = "smm-message-dlq"
 }
