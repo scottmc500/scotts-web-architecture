@@ -113,3 +113,7 @@ resource "aws_cloudfront_distribution" "root_s3_distribution" {
 
   tags = var.common_tags
 }
+
+output "www_distribution_id" {
+  value = aws_cloudfront_distribution.www_s3_distribution.id
+}

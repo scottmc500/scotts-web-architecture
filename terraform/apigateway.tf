@@ -82,3 +82,12 @@ resource "aws_api_gateway_usage_plan_key" "messages_usage_plan_key" {
     key_type = "API_KEY"
     usage_plan_id = aws_api_gateway_usage_plan.messages_usage_plan.id
 }
+
+output "api_key_value" {
+  value = aws_api_gateway_api_key.messages_key.value
+  sensitive = true
+}
+
+output "api_endpoint" {
+  value = "${aws_api_gateway_deployment.message.invoke_url}${aws_api_gateway_stage.default.stage_name}${aws_api_gateway_resource.message.path}"
+}
