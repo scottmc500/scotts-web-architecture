@@ -15,7 +15,7 @@
       "zip": "19808"
     },
     "website": "http://www.scottmchenry.info",
-    "resumedownload": "https://s3.us-east-2.amazonaws.com/www.scottmchenry.net/mchenry-scott-resume.pdf",
+    "resumedownload": "https://s3.amazonaws.com/www.scottmchenry.net/mchenry-scott-resume.pdf",
     "social": [
       {
         "name": "linkedin",
