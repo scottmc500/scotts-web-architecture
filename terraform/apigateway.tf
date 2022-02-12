@@ -60,37 +60,37 @@ resource "aws_api_gateway_integration_response" "message_post" {
 }
 
 resource "aws_api_gateway_deployment" "message" {
-    rest_api_id = aws_api_gateway_rest_api.messages_api.id
-    triggers = {
-      redeployment = sha1(jsonencode(aws_api_gateway_rest_api.messages_api.body))
-    }
-    lifecycle {
-      create_before_destroy = true
-    }
+  rest_api_id = aws_api_gateway_rest_api.messages_api.id
+  triggers = {
+    redeployment = sha1(jsonencode(aws_api_gateway_rest_api.messages_api.body))
+  }
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "aws_api_gateway_stage" "default" {
-    deployment_id = aws_api_gateway_deployment.message.id
-    rest_api_id = aws_api_gateway_rest_api.messages_api.id
-    stage_name = "default"
+  deployment_id = aws_api_gateway_deployment.message.id
+  rest_api_id = aws_api_gateway_rest_api.messages_api.id
+  stage_name = "default"
 }
 
 resource "aws_api_gateway_api_key" "messages_key" {
-    name = "messages_key"
+  name = "messages_key"
 }
 
 resource "aws_api_gateway_usage_plan" "messages_usage_plan" {
-    name = "messages_usage_plan"
-    api_stages {
-        api_id = aws_api_gateway_rest_api.messages_api.id
-        stage = aws_api_gateway_stage.default.stage_name
-    }
+  name = "messages_usage_plan"
+  api_stages {
+    api_id = aws_api_gateway_rest_api.messages_api.id
+    stage = aws_api_gateway_stage.default.stage_name
+  }
 }
 
 resource "aws_api_gateway_usage_plan_key" "messages_usage_plan_key" {
-    key_id = aws_api_gateway_api_key.messages_key.id
-    key_type = "API_KEY"
-    usage_plan_id = aws_api_gateway_usage_plan.messages_usage_plan.id
+  key_id = aws_api_gateway_api_key.messages_key.id
+  key_type = "API_KEY"
+  usage_plan_id = aws_api_gateway_usage_plan.messages_usage_plan.id
 }
 
 output "api_key_value" {
