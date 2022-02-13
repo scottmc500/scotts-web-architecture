@@ -31,3 +31,7 @@ resource "aws_s3_bucket" "root_bucket" {
 
   tags = var.common_tags
 }
+
+output "resume_endpoint" {
+  value = "https://s3.${var.aws_region}.amazonaws.com/${aws_s3_bucket.www_bucket.bucket}/mchenry-scott-resume.pdf"
+}
