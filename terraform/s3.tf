@@ -16,6 +16,11 @@ resource "aws_s3_bucket" "www_bucket" {
     error_document = "index.html"
   }
 
+  logging {
+    target_bucket = aws_s3_bucket.logs_bucket.id
+    target_prefix = "logs/"
+  }
+
   tags = var.common_tags
 }
 
@@ -30,6 +35,12 @@ resource "aws_s3_bucket" "root_bucket" {
   }
 
   tags = var.common_tags
+}
+
+resource "aws_s3_bucket" "logs_bucket" {
+   bucket = "logs.${var.bucket_name}"
+   acl = "public-read"
+   policy = templatefile("templates/s3-policy.json", { bucket = "logs.${var.bucket_name}" })
 }
 
 output "resume_endpoint" {
