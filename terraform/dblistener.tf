@@ -43,7 +43,6 @@ resource "aws_lambda_function" "message_listener" {
     role = aws_iam_role.messages_lambda_role.arn
     handler = "lambda_function.lambda_handler"
     runtime = "python3.8"
-    source_code_hash = filebase64sha256("output/lambda.zip")
     environment {
         variables = {
             TOPIC_ARN = aws_sns_topic.messaging_topic.arn
