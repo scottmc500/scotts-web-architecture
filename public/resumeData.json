@@ -138,6 +138,12 @@
         "category": "A web-based information system that enables ‘cradle-to-grave’ tracking of military/criminal justice information.",
         "image": "NJIS_tri.jpeg",
         "url": "https://www.hqmc.marines.mil/Portals/138/Docs/PS/PSL/NJIS/NJIS_TrifoldFinal.pdf"
+      },
+      {
+        "title": "Sharing Excess",
+        "category": "A web application which fights food insecurity in our local community by solving the last mile problem for surplus food from wholesale markets, grocery stores, and restaurants.",
+        "image": "sharing-excess.png",
+        "url": "https://sharingexcess.web.app"
       }
     ]
   },
