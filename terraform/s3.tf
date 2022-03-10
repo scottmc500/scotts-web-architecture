@@ -38,16 +38,16 @@ resource "aws_s3_bucket" "root_bucket" {
 }
 
 resource "aws_s3_bucket" "logs_bucket" {
-   bucket = "logs.${var.bucket_name}"
-   acl = "log-delivery-write"
-   lifecycle_rule {
-     id = "logs"
-     prefix = "logs/"
-     enabled = true
-     expiration {
-       days = 90
-     }
-   }
+  bucket = "logs.${var.bucket_name}"
+  acl    = "log-delivery-write"
+  lifecycle_rule {
+    id      = "logs"
+    prefix  = "logs/"
+    enabled = true
+    expiration {
+      days = 90
+    }
+  }
 }
 
 output "resume_endpoint" {

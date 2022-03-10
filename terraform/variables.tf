@@ -9,7 +9,7 @@ variable "bucket_name" {
 }
 
 variable "aws_region" {
-  type = string
+  type        = string
   description = "The AWS Region where the architecture is located."
 }
 
