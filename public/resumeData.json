@@ -2,7 +2,7 @@
   "main": {
     "name": "Scott McHenry",
     "occupation": "Software and DevOps Engineer",
-    "description": "I'm a Vice President of Software Engineering for JPMorgan Chase & Co., and I'm a graduate of both Case Western Reserve University (2014, B.S. Computer Engineering) and Drexel University (2018, M.S. Software Engineering).",
+    "description": "I'm a Senior Software Engineer at JPMorgan Chase & Co., and I'm a graduate of both Case Western Reserve University (2014, B.S. Computer Engineering) and Drexel University (2018, M.S. Software Engineering).",
     "image": "profilepic.jpg",
     "bio": "I am an experienced Software and DevOps Engineer with a demonstrated history of achievement in software information systems engineering in the public and private sectors. I currently works as a Vice President of Software Engineering for JPMorgan Chase. I previously worked as a Lead Systems Engineer for US Navy Information Systems.\n\nOver the course of my career, I have become skilled in the design and implementation of microservice, cloud-based and serverless architectures, utilizing such tools and AWS Lambda and S3 and languages such as Python, Java and Node.js. I also specialize in the construction of Continuous Integration and Continuous Deployment (CI/CD) pipelines to streamline the deployment of software, using tools such as Jenkins and GitHub Actions.\n\nI graduated in 2018 from Drexel University with a Master's degree in Software Engineering, and Case Western Reserve University in 2014 with a Bachelor's degree in Computer Engineering.",
     "contactmessage": "Feel free to send me a message, and I will get back to you as soon as I can.",
